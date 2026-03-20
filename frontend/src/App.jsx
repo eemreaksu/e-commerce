@@ -4,6 +4,7 @@ import Header from "./components/layout/Header/Header";
 import Footer from "./components/layout/Footer/Footer";
 import Policy from "./components/layout/Policy/Policy";
 import Sliders from "./components/Slider/Sliders";
+import Categories from "./components/Categories/Categories";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <>
       <Header />
       <Sliders />
+      <Categories />
       <Policy />
       <Footer />
     </>

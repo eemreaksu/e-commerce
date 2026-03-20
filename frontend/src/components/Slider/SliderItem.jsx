@@ -1,4 +1,4 @@
-/* import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const SliderItem = ({ imageSrc }) => {
   return (
@@ -21,4 +21,4 @@ export default SliderItem;
 
 SliderItem.propTypes = {
   imageSrc: PropTypes.string,
-}; */
+};
