@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
 import "./ProductItem.css";
+/*  npm i react-router-dom */
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ productItem }) => {

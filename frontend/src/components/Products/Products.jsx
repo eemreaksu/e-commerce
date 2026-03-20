@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
+/* npm install react-slick slick-carousel */
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 import "./Products.css";
