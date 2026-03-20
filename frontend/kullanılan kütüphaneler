@@ -1,0 +1,10 @@
+npm install recharts
+
+npm install react-quill
+
+npm install react-quill --legacy-peer-deps
+
+
+npm install @stripe/stripe-js
+
+npm install react-quill @stripe/stripe-js recharts react-slick slick-carousel --legacy-peer-deps

@@ -42,7 +42,7 @@ const Products = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setProducts(data);
+          setProducts(Array.isArray(data) ? data : data.products || []);
         } else {
           message.error("Veri getirme başarısız.");
         }

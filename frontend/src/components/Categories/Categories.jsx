@@ -15,7 +15,7 @@ const Categories = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setCategories(data);
+          setCategories(Array.isArray(data) ? data : data.categories || []);
         } else {
           message.error("Veri getirme başarısız.");
         }

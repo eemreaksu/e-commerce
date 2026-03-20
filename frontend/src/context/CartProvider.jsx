@@ -3,12 +3,19 @@ import PropTypes from "prop-types";
 
 export const CartContext = createContext();
 
+const getStoredCartItems = () => {
+  try {
+    const storedCartItems = localStorage.getItem("cartItems");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  } catch (error) {
+    console.error("Cart verisi okunamadı:", error);
+    localStorage.removeItem("cartItems");
+    return [];
+  }
+};
+
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState(
-    localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
-      : []
-  );
+  const [cartItems, setCartItems] = useState(getStoredCartItems);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));

@@ -7,13 +7,15 @@ import { Link } from "react-router-dom";
 
 const ProductItem = ({ productItem }) => {
   const { cartItems, addToCart } = useContext(CartContext);
+  const productImages = Array.isArray(productItem?.img) ? productItem.img : [];
+  const firstImage = productImages[0] || "/img/products/product1/1.png";
+  const secondImage = productImages[1] || firstImage;
+  const originalPrice = Number(productItem?.price?.current ?? 0);
+  const discountPercentage = Number(productItem?.price?.discount ?? 0);
 
   const filteredCart = cartItems.find(
     (cartItem) => cartItem._id === productItem._id
   );
-
-  const originalPrice = productItem.price.current;
-  const discountPercentage = productItem.price.discount;
 
   // İndirimli fiyatı hesaplama
   const discountedPrice =
@@ -23,13 +25,13 @@ const ProductItem = ({ productItem }) => {
     <div className="product-item glide__slide glide__slide--active">
       <div className="product-image">
         <a href="#">
-          <img src={productItem.img[0]} alt="" className="img1" />
-          <img src={productItem.img[1]} alt="" className="img2" />
+          <img src={firstImage} alt={productItem?.name || "Product"} className="img1" />
+          <img src={secondImage} alt={productItem?.name || "Product"} className="img2" />
         </a>
       </div>
       <div className="product-info">
         <a href="$" className="product-title">
-          {productItem.name}
+          {productItem?.name || "Unnamed Product"}
         </a>
         <ul className="product-star">
           <li>
@@ -52,7 +54,7 @@ const ProductItem = ({ productItem }) => {
           <strong className="new-price">${discountedPrice.toFixed(2)}</strong>
           <span className="old-price">${originalPrice.toFixed(2)}</span>
         </div>
-        <span className="product-discount">-{productItem.price.discount}%</span>
+        <span className="product-discount">-{discountPercentage}%</span>
         <div className="product-links">
           <button
             className="add-to-cart"
@@ -69,7 +71,7 @@ const ProductItem = ({ productItem }) => {
           <button>
             <i className="bi bi-heart-fill"></i>
           </button>
-          <Link to={`product/${productItem._id}`} className="product-link">
+          <Link to={`/product/${productItem?._id}`} className="product-link">
             <i className="bi bi-eye-fill"></i>
           </Link>
           <a href="#">
